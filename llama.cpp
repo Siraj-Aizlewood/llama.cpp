@@ -9865,7 +9865,7 @@ llama_token llama_sample_token(struct llama_context * ctx, llama_token_data_arra
         probs.push_back(candidates->data[i].p);
     }
 
-    std::discrete_distribution<> dist(probs.begin(), probs.end());
+    std::discrete_distribution<> dist(*probs.begin(), *probs.end());
     auto & rng = ctx->rng;
     int idx = dist(rng);
 
